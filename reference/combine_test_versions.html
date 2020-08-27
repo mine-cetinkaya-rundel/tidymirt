@@ -154,39 +154,41 @@ were unchanged, moved, removed, or added.</p>
 )
 
 <span class='no'>test_b</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tribble.html'>tribble</a></span>(
-  ~<span class='no'>B1</span>, ~<span class='no'>B2</span>, ~<span class='no'>B3</span>, ~<span class='no'>B4</span>,
+  ~<span class='no'>Q1</span>, ~<span class='no'>Q2</span>, ~<span class='no'>Q3</span>, ~<span class='no'>Q4</span>,
   <span class='fl'>1</span>,   <span class='fl'>1</span>,   <span class='fl'>1</span>,   <span class='fl'>0</span>,
   <span class='fl'>0</span>,   <span class='fl'>1</span>,   <span class='fl'>0</span>,   <span class='fl'>1</span>,
   <span class='fl'>0</span>,   <span class='fl'>1</span>,   <span class='fl'>0</span>,   <span class='fl'>0</span>
 )
 
 <span class='no'>meta_data</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tribble.html'>tribble</a></span>(
-  ~<span class='no'>A</span>, ~<span class='no'>B</span>,
-  <span class='fl'>1</span>,  <span class='fl'>1</span>,
-  <span class='fl'>2</span>,  <span class='fl'>3</span>,
-  <span class='fl'>3</span>,  <span class='fl'>NA</span>,
-  <span class='fl'>4</span>,  <span class='fl'>2</span>,
-  <span class='fl'>NA</span>,  <span class='fl'>2</span>
+  ~<span class='no'>A</span>,   ~<span class='no'>B</span>,
+  <span class='st'>"A1"</span>, <span class='st'>"Q1"</span>,
+  <span class='st'>"A2"</span>, <span class='st'>"Q3"</span>,
+  <span class='st'>"A3"</span>, <span class='fl'>NA</span>,
+  <span class='st'>"A4"</span>, <span class='st'>"Q2"</span>,
+  <span class='fl'>NA</span>,   <span class='st'>"Q4"</span>
 )
 
 <span class='fu'>combine_test_versions</span>(<span class='no'>test_a</span>, <span class='no'>test_b</span>, <span class='no'>meta_data</span>)</div><div class='output co'>#&gt; $response_data
-#&gt; <span style='color: #555555;'># A tibble: 4 x 5</span><span>
+#&gt; <span style='color: #555555;'># A tibble: 6 x 5</span><span>
 #&gt;   A1_B1 A2_B3 A3_B0 A4_B2 A0_B4
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span>     1     1     1     0     1
-#&gt; </span><span style='color: #555555;'>2</span><span>     0     1     0     1     0
-#&gt; </span><span style='color: #555555;'>3</span><span>     1     1     0     1     1
-#&gt; </span><span style='color: #555555;'>4</span><span>     1     1     1     0     1
+#&gt; </span><span style='color: #555555;'>1</span><span>     0     1     1     0    </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #555555;'>2</span><span>     0     0     1     1    </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #555555;'>3</span><span>     0     1     0     1    </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #555555;'>4</span><span>     1     1    </span><span style='color: #BB0000;'>NA</span><span>     1     0
+#&gt; </span><span style='color: #555555;'>5</span><span>     0     0    </span><span style='color: #BB0000;'>NA</span><span>     1     1
+#&gt; </span><span style='color: #555555;'>6</span><span>     0     0    </span><span style='color: #BB0000;'>NA</span><span>     1     0
 #&gt; 
 #&gt; $meta_data
 #&gt; </span><span style='color: #555555;'># A tibble: 5 x 8</span><span>
-#&gt;   label id    group     A     B test_a_name test_b_name status   
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;lgl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;lgl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    
-#&gt; </span><span style='color: #555555;'>1</span><span> A1_B1 </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span>        1     1 A1          B1          unchanged
-#&gt; </span><span style='color: #555555;'>2</span><span> A2_B3 </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span>        2     3 A2          B2          moved    
-#&gt; </span><span style='color: #555555;'>3</span><span> A3_B0 </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span>        3     0 A3          B0          removed  
-#&gt; </span><span style='color: #555555;'>4</span><span> A4_B2 </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span>        4     2 A4          B2          moved    
-#&gt; </span><span style='color: #555555;'>5</span><span> A0_B4 </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span>        0     4 A0          B4          added    
+#&gt;   item_name id    group     A     B test_a_name test_b_name status   
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;lgl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;lgl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    
+#&gt; </span><span style='color: #555555;'>1</span><span> A1_B1     </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span>        1     1 A1          Q1          unchanged
+#&gt; </span><span style='color: #555555;'>2</span><span> A2_B3     </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span>        2     3 A2          Q2          moved    
+#&gt; </span><span style='color: #555555;'>3</span><span> A3_B0     </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span>        3     0 A3          Q0          removed  
+#&gt; </span><span style='color: #555555;'>4</span><span> A4_B2     </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span>        4     2 A4          Q2          moved    
+#&gt; </span><span style='color: #555555;'>5</span><span> A0_B4     </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span>        0     4 A0          Q4          added    
 #&gt; </div><div class='input'>
 </div></span></pre>
   </div>

@@ -32,19 +32,19 @@ test_a <- tribble(
 )
 
 test_b <- tribble(
-  ~B1, ~B2, ~B3, ~B4,
+  ~Q1, ~Q2, ~Q3, ~Q4,
   1,   1,   1,   0,
   0,   1,   0,   1,
   0,   1,   0,   0
 )
 
 meta_data <- tribble(
-  ~A, ~B,
-  1,  1,
-  2,  3,
-  3,  NA,
-  4,  2,
-  NA,  2
+  ~A,   ~B,
+  "A1", "Q1",
+  "A2", "Q3",
+  "A3", NA,
+  "A4", "Q2",
+  NA,   "Q4"
 )
 
 combine_test_versions(test_a, test_b, meta_data)

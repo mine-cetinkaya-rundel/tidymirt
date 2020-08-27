@@ -1,5 +1,5 @@
 Package: tidymirt
-Title: What the Package Does (One Line, Title Case)
+Title: Tidyverse friendly functions for Item Response Theory
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Mine",
@@ -18,3 +18,5 @@ BugReports: https://github.com/mine-cetinkaya-rundel/tidymirt/issues
 Imports: 
     magrittr,
     tibble
+Suggests: 
+    testthat
